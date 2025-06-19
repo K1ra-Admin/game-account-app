@@ -1,1 +1,1 @@
-/* CSS utama */
+body { font-family: sans-serif; background: #111; color: white; padding: 20px; } .container { max-width: 600px; margin: auto; } input, textarea { width: 100%; margin: 5px 0; padding: 8px; } button { margin: 5px; padding: 8px 12px; }

@@ -1,1 +1,1 @@
-// JavaScript umum
+// script.js placeholder
