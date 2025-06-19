@@ -1,1 +1,23 @@
-body { font-family: sans-serif; background: #111; color: white; padding: 20px; } .container { max-width: 600px; margin: auto; } input, textarea { width: 100%; margin: 5px 0; padding: 8px; } button { margin: 5px; padding: 8px 12px; }
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #111;
+  color: #eee;
+}
+input, button {
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+}
+button {
+  background-color: #00ffd9;
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+a {
+  color: #00ffd9;
+}
+h2 {
+  color: #00ffd9;
+}
