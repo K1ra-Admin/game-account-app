@@ -1,1 +1,3 @@
-# game-account-app
+# Game Account Submission App
+
+Panduan setup dan penggunaan
