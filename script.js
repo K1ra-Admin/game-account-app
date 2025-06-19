@@ -10,7 +10,13 @@ if (document.getElementById("registerForm")) {
         email: email.value,
         password: password.value
       }),
-    }).then(res => res.text()).then(alert).then(() => location.href = "index.html");
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.text())
+    .then(alert)
+    .then(() => location.href = "index.html");
   });
 }
 
@@ -24,12 +30,20 @@ if (document.getElementById("loginForm")) {
         email: email.value,
         password: password.value
       }),
-    }).then(res => res.json()).then(data => {
-      if (data.status === "success") {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
         localStorage.setItem("user_id", data.id);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("leader", data.leader);
         location.href = "profile.html";
       } else {
-        alert("Login gagal!");
+        alert("Login gagal. Periksa email dan password.");
       }
     });
   });
@@ -37,13 +51,21 @@ if (document.getElementById("loginForm")) {
 
 if (document.getElementById("profile-info")) {
   const id = localStorage.getItem("user_id");
+  profileInfo.innerHTML = "<p>Memuat...</p>";
   fetch(BASE_URL, {
     method: "POST",
-    body: JSON.stringify({ action: "get_profile", id })
-  }).then(res => res.json()).then(data => {
+    body: JSON.stringify({ action: "get_profile", id }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
     profileInfo.innerHTML = `
       <p><strong>ID:</strong> ${data.id}</p>
       <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Username:</strong> ${data.username || "Not Set"}</p>
+      <p><strong>Leader:</strong> ${data.leader || "Not Set"}</p>
     `;
     document.getElementById("toHistory").href = "history.html?id=" + data.id;
   });
@@ -57,7 +79,10 @@ if (document.getElementById("profile-info")) {
         id: localStorage.getItem("user_id"),
         username: username.value,
         leader: leader.value
-      })
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
     }).then(res => res.text()).then(alert);
   });
 }
@@ -70,9 +95,12 @@ if (document.getElementById("singleAccountForm")) {
       body: JSON.stringify({
         action: "submit_account",
         id: localStorage.getItem("user_id"),
-        email: accountEmail.value,
-        password: accountPassword.value
-      })
+        accountEmail: accountEmail.value,
+        accountPassword: accountPassword.value
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
     }).then(res => res.text()).then(alert);
   });
 }
@@ -94,7 +122,8 @@ if (document.getElementById("history-container")) {
         div.innerHTML = `<p><strong>Email:</strong> ${item.email}</p><p><strong>Status:</strong> ${statusIcon}</p><hr/>`;
         container.appendChild(div);
       });
-    }).catch(() => {
+    })
+    .catch(() => {
       document.getElementById("history-container").innerHTML = "<p>Gagal memuat data.</p>";
     });
 }
