@@ -1,80 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Profile</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h2>👤 Profile</h2>
-    <p><strong>ID:</strong> <span id="user-id">Loading...</span></p>
-    <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
-
-    <div class="editable-field">
-      <label>Username</label>
-      <input type="text" id="username" disabled>
-    </div>
-    <div class="editable-field">
-      <label>Team Leader</label>
-      <input type="text" id="leader" disabled>
-    </div>
-
-    <button id="edit-btn">✏️ Edit</button>
-    <button id="save-btn" style="display:none;">✅ Simpan</button>
-  </div>
-
+  <h2>Profil Akun</h2>
+  <div id="profile-info"></div>
+  <form id="updateForm">
+    <input type="text" placeholder="Username" id="username" required><br>
+    <input type="text" placeholder="Leader" id="leader" required><br>
+    <button type="submit">Simpan</button>
+  </form>
+  <p><a href="account.html">Setor Akun</a> | <a href="history.html?id=" id="toHistory">Riwayat</a></p>
   <script src="script.js"></script>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('id');
-    document.getElementById('user-id').innerText = userId;
-
-    async function loadProfile() {
-      const res = await fetch(BASE_URL, {
-        method: 'POST',
-        body: JSON.stringify({ action: 'login', id: userId }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-      const data = await res.json();
-      if (data.success) {
-        document.getElementById('user-email').innerText = data.email;
-        document.getElementById('username').value = data.username;
-        document.getElementById('leader').value = data.leader;
-      }
-    }
-
-    loadProfile();
-
-    const editBtn = document.getElementById('edit-btn');
-    const saveBtn = document.getElementById('save-btn');
-    const usernameInput = document.getElementById('username');
-    const leaderInput = document.getElementById('leader');
-
-    editBtn.onclick = () => {
-      usernameInput.disabled = false;
-      leaderInput.disabled = false;
-      editBtn.style.display = 'none';
-      saveBtn.style.display = 'inline-block';
-    };
-
-    saveBtn.onclick = async () => {
-      const username = usernameInput.value;
-      const leader = leaderInput.value;
-      await fetch(BASE_URL, {
-        method: 'POST',
-        body: JSON.stringify({
-          action: 'update_profile',
-          id: userId,
-          username,
-          leader
-        }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-      alert("Berhasil disimpan!");
-      window.location.reload();
-    };
-  </script>
 </body>
 </html>
