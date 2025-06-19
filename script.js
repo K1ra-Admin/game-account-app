@@ -1,4 +1,4 @@
-const BASE_URL = "https://script.google.com/macros/s/AKfycbxUZVr6G9yHiQdJ2AIfk71U-zC8EXhHMfnmvh3DcS_HsAYkoIzCIk5kd4lq_Pp9t354/exec";
+const BASE_URL = https://script.google.com/macros/s/AKfycbytkO0ccfauJUFEwQEy7xCwiMsshPv_2bjV2XvbRDd0LK0ckD9309MsEMI3SicJVvG_/exec;
 
 if (document.getElementById("registerForm")) {
   registerForm.addEventListener("submit", e => {
