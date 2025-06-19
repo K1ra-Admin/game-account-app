@@ -1,51 +1,51 @@
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
-  color: white;
-  padding: 0;
   margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f5fa;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
 }
-h2 {
-  margin-top: 40px;
-  color: #00bcd4;
-}
-form {
-  background-color: #333;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #000;
-  width: 90%;
-  max-width: 400px;
-}
-input, button {
+.container {
+  background: white;
+  padding: 40px 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  text-align: center;
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  max-width: 360px;
+}
+.container h2 {
+  margin-bottom: 20px;
+  color: #1e88e5;
 }
 input {
-  background: #555;
-  color: white;
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 button {
-  background: #00bcd4;
+  width: 100%;
+  padding: 12px;
+  background: #1e88e5;
+  border: none;
+  border-radius: 8px;
   color: white;
   font-weight: bold;
+  margin-top: 10px;
   cursor: pointer;
 }
-a {
-  color: #00bcd4;
+button:hover {
+  background: #1565c0;
 }
-#history-container > div {
-  background-color: #444;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
+p {
+  margin-top: 15px;
+}
+a {
+  color: #1e88e5;
+  text-decoration: none;
 }
