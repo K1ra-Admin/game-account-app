@@ -1,75 +1,13 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Setor Akun Game</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setor Akun</title><link rel="stylesheet" href="style.css"></head>
 <body>
-  <div class="container">
-    <h2>🎮 Setor Akun Game</h2>
-
-    <div>
-      <button onclick="showSingle()">Setor Satu</button>
-      <button onclick="showBulk()">Setor Banyak</button>
-    </div>
-
-    <div id="single-form">
-      <h3>Setor Satu Akun</h3>
-      <input type="email" id="emailSingle" placeholder="Email akun game" />
-      <input type="text" id="passSingle" placeholder="Password" />
-      <button onclick="submitSingle()">Kirim</button>
-    </div>
-
-    <div id="bulk-form" style="display:none;">
-      <h3>Setor Banyak Akun</h3>
-      <textarea id="emailsBulk" placeholder="Satu email per baris"></textarea>
-      <input type="text" id="passBulk" placeholder="Password untuk semua" />
-      <button onclick="submitBulk()">Kirim Semua</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('id');
-
-    function showSingle() {
-      document.getElementById('single-form').style.display = 'block';
-      document.getElementById('bulk-form').style.display = 'none';
-    }
-
-    function showBulk() {
-      document.getElementById('single-form').style.display = 'none';
-      document.getElementById('bulk-form').style.display = 'block';
-    }
-
-    async function submitSingle() {
-      const email = document.getElementById('emailSingle').value;
-      const pass = document.getElementById('passSingle').value;
-
-      const res = await submitAccount(userId, email, pass);
-      if (res.success) {
-        alert("Berhasil kirim akun!");
-        location.reload();
-      } else {
-        alert("Gagal kirim akun");
-      }
-    }
-
-    async function submitBulk() {
-      const emails = document.getElementById('emailsBulk').value.trim().split("\n");
-      const pass = document.getElementById('passBulk').value;
-
-      for (let email of emails) {
-        if (email.trim() === '') continue;
-        await submitAccount(userId, email.trim(), pass);
-      }
-
-      alert("Berhasil kirim semua akun!");
-      location.reload();
-    }
-  </script>
-</body>
-</html>
+<h2>Setor Akun Game</h2>
+<form id="singleAccountForm">
+  <input type="text" placeholder="Email Akun" id="accountEmail" required><br>
+  <input type="text" placeholder="Password" id="accountPassword" required><br>
+  <button type="submit">Kirim Akun</button>
+</form>
+<p><a href="profile.html">Kembali ke Profil</a></p>
+<script src="script.js"></script>
+</body></html>
