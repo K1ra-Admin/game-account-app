@@ -1,1 +1,23 @@
-/* CSS utama */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #111;
+  color: #eee;
+}
+input, button {
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+}
+button {
+  background-color: #00ffd9;
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+a {
+  color: #00ffd9;
+}
+h2 {
+  color: #00ffd9;
+}
